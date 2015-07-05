@@ -34,6 +34,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use Figaro to hide access keys and secret keys.
+gem 'figaro'
+
 #Use OmniAuth for authentication of facebook
 gem 'omniauth'	
 gem 'omniauth-facebook'
