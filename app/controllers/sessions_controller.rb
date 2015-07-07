@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
   	# Fetches the OAuth response info
     @auth = request.env['omniauth.auth']
     session['auth'] = @auth
-    redirect_to sessions_show_path
+    redirect_to users_edit_path
   end
 
   def destroy
