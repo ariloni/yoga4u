@@ -3,19 +3,32 @@ class SessionsController < ApplicationController
   end
 
   def show
-  	redirect_to root_path unless session['auth']
+    
   	@auth = session['auth']
   end
 
   def create
+  	#render text: request.env['omniauth.auth'].to_yaml
   	# Fetches the OAuth response info
-    @auth = request.env['omniauth.auth']
-    session['auth'] = @auth
-    redirect_to users_edit_path
+    # @auth = request.env['omniauth.auth']
+    # session['auth'] = @auth
+    # redirect_to sessions_show_path
+    
+	    @user = User.from_omniauth(request.env['omniauth.auth'])
+	    session[:user_id] = @user.id
+	    flash[:success] = "Welcome, #{@user.first_name}!"
+
+		redirect_to root_path
   end
 
   def destroy
-  	session['auth'] = nil
-  	redirect_to root_path
+  	if current_user
+      session.delete(:user_id)
+      flash[:success] = 'See you!'
+    end
+    redirect_to root_path
+  end
+  def auth_failure
+    redirect_to root_path
   end
 end

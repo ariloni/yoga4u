@@ -8,17 +8,32 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse navbar-static-top">
-    <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
-        <% if session['auth'] %>
-        <li><a href="/sessions/show">Profile</a></li>
-        <li><a href="/auth/logout">Logout</a></li>
-        <% else %>
-        <li><a href="/auth/facebook">Login via Facebook</a></li>
-        <% end %>
-    </ul>
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to 'Social Freak', root_path, class: 'navbar-brand' %>
+    </div>
+    <div id="navbar">
+      <% if current_user %>
+        <ul class="nav navbar-nav pull-right">
+          <li><%= image_tag current_user.image, alt: current_user.first_name %></li>
+          <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
+        </ul>
+      <% else %>
+        <ul class="nav navbar-nav">
+          <li><%= link_to 'Facebook', '/auth/facebook' %></li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
 </nav>
+
+<div class="container">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>">
+      <%= value %>
+    </div>
+  <% end %>
 
 <%= yield %>
 
