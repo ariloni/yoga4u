@@ -1,19 +1,24 @@
 <h1>Users#edit</h1>
 <p>Find me in app/views/users/edit.html.erb</p>
-<%= form_for(@article) do |f| %>
+<%= form_for(@user) do |f| %>
   <ul>
-  <% @article.errors.full_messages.each do |error| %>
+  <% @user.errors.full_messages.each do |error| %>
     <li><%= error %></li>
   <% end %>
   </ul>
+  
   <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
   </p>
   <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
+    <%= f.label :bio %><br />
+    <%= f.text_area :bio %>
   </p>
+  <div class="field">
+    <%= f.label "Intructor" %> <br />
+    <%= f.check_box :instructor %> <br />
+  </div>
   <p>
     <%= f.submit %>
   </p>
