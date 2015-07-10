@@ -2,6 +2,7 @@
 <p>Find me in app/views/users/show.html.erb</p>
 <% if @user.instructor == true %>
         <%= render 'instructor' %>
-    <% else %>
+
+<% elsif @user.student == true %>
         <%= render 'student' %>
-    <% end %>
+<% end %>

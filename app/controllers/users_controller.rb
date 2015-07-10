@@ -33,7 +33,7 @@ private
 
   ## Defining the paraments for the users
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :image, :bio, :phone, :email, :city, :state, :instructor, :provider, :uid, :oauth_token, :oauth_expires_at)
+    params.require(:user).permit(:first_name, :last_name, :image, :bio, :phone, :email, :city, :state, :instructor, :provider, :student, :uid, :oauth_token, :oauth_expires_at)
   end
 
 end

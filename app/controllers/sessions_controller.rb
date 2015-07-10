@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
   def new
-    puts "whatever"
+    
   end
 
   def show
-    puts "everything"
+    
   	@auth = session['auth']
   end
 
@@ -14,11 +14,11 @@ class SessionsController < ApplicationController
     # @auth = request.env['omniauth.auth']
     # session['auth'] = @auth
     # redirect_to sessions_show_path
-    puts "ari"
+    
     @user = User.from_omniauth(request.env['omniauth.auth'])
     session[:user_id] = @user.id
     flash[:success] = "Welcome, #{@user.first_name}!"
-    puts "jefferson"
+    
 	
     redirect_to edit_user_path(@user)
   end
@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
     
     redirect_to root_path
   end
-  
+
   def auth_failure
     redirect_to root_path
   end
