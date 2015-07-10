@@ -27,3 +27,4 @@
     <%= f.submit %>
   </p>
 <% end %>
+<%= button_to "Delete my account", user_path, :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-danger" %>
