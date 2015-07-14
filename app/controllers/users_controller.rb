@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
     @review = Review.new
     @review.for_user_id = @user.id
+    @review.by_user_id = current_user.id
   end
 
   def new

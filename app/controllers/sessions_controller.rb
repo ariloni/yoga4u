@@ -14,11 +14,14 @@ class SessionsController < ApplicationController
     # @auth = request.env['omniauth.auth']
     # session['auth'] = @auth
     # redirect_to sessions_show_path
-    
-    @user = User.from_omniauth(request.env['omniauth.auth'])
-    puts @user
-    session[:user_id] = @user.id
-    flash[:success] = "Welcome, #{@user.first_name}!"
+    begin
+      @user = User.from_omniauth(request.env['omniauth.auth'])
+      puts @user
+      session[:user_id] = @user.id
+      flash[:success] = "Welcome, #{@user.first_name}!"
+    rescue
+      flash[:warning] = "There was an error while trying to authenticate you..."
+    end
     
     if current_user.bio 
       redirect_to user_path(@user)

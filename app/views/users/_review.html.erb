@@ -1,5 +1,5 @@
 <div>
-  <h4>Review by <%#= review.by_user_id.first_name %></h4>
+  <h4>Review by <%= review.by_user_id %></h4>
   <p><%= review.body %></p>
   <p>Posted <%#= distance_of_time_in_words(review.by_user_id.created_at, review.created_at) %> later</p>
   
