@@ -2,7 +2,11 @@
 <p>Find me in app/views/users/show.html.erb</p>
 <% if @user.instructor == true %>
         <%= render 'instructor' %>
+        
 
 <% elsif @user.student == true %>
         <%= render 'student' %>
+        
 <% end %>
+<%= render partial: 'users/review', collection: @user.reviews_for_me %>
+<%= render partial: 'reviews/form' %>

@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    @review = Review.new
+    @review.for_user_id = @user.id
   end
 
   def new
@@ -13,6 +16,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id.to_s
+    end
   end
 
   def edit

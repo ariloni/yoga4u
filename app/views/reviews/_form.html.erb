@@ -1,0 +1,15 @@
+<h3>Post a Review</h3>
+
+<%= form_for [ @user, @review ] do |f| %>
+  <p>
+    <%= f.label :title %><br/>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body %><br/>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit 'Submit' %>
+  </p>
+<% end %>

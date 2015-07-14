@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
-  get 'reviews/index'
+  # get 'reviews/index'
 
-  get 'reviews/show'
+  # get 'reviews/show'
 
-  get 'reviews/new'
+  # get 'reviews/new'
 
-  get 'reviews/create'
+  # get 'reviews/create'
 
-  get 'reviews/destroy'
+  # get 'reviews/destroy'
 
-  get 'reviews/edit'
+  # get 'reviews/edit'
 
-  get 'reviews/update'
+  # get 'reviews/update'
+  resources :users do
+    resources :reviews
+  end
 
   # get 'users/index'
 
@@ -27,7 +30,7 @@ Rails.application.routes.draw do
 
   # get 'users/destroy'
 
-  resources :users
+  
 
 
   get 'sessions/new'

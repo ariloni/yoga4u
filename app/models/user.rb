@@ -1,15 +1,7 @@
 class User < ActiveRecord::Base
-	# def self.from_omniauth(auth)
- #      where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-	#       user.provider = auth.provider
-	#       user.uid = auth.uid
-	#       user.name = auth.info.name
-	#       user.oauth_token = auth.credentials.token
-	#       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-	#       user.save!
- #      end
-	# end
-	 
+  has_many :reviews_for_me, class_name: "Review", foreign_key: "for_user_id"
+  has_many :reviews_by_me, class_name: "Review", foreign_key: "by_user_id"
+
   class << self
 	  def from_omniauth(auth_hash)
 	    user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
