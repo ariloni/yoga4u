@@ -16,11 +16,15 @@ class SessionsController < ApplicationController
     # redirect_to sessions_show_path
     
     @user = User.from_omniauth(request.env['omniauth.auth'])
+    puts @user
     session[:user_id] = @user.id
     flash[:success] = "Welcome, #{@user.first_name}!"
     
-	
-    redirect_to edit_user_path(@user)
+    if current_user.bio 
+      redirect_to user_path(@user)
+    else
+      redirect_to edit_user_path(@user)
+    end
   end
 
   def destroy
