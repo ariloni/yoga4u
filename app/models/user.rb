@@ -2,6 +2,15 @@ class User < ActiveRecord::Base
   has_many :reviews_for_me, class_name: "Review", foreign_key: "for_user_id"
   has_many :reviews_by_me, class_name: "Review", foreign_key: "by_user_id"
 
+  # setting parameters for geocode gem
+  geocoded_by :full_address
+  #geocode won't run until after validations
+  after_validation :geocode
+
+  def full_address
+  	[address, city, state, zipcode].join(', ')
+  end	
+
   class << self
 	  def from_omniauth(auth_hash)
 	    user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])

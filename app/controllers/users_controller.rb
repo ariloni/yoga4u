@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
+  
   def index
     @users= User.all
+    respond_to do |format|
+     format.html {
+       render
+     }
+     format.json {
+       render json: @users
+     }
+    end
   end
 
   def show
@@ -46,7 +55,7 @@ private
 
   ## Defining the paraments for the users
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :image, :bio, :phone, :email, :city, :state, :instructor, :provider, :student, :uid, :oauth_token, :oauth_expires_at)
+    params.require(:user).permit(:first_name, :last_name, :image, :bio, :phone, :email, :city, :state, :instructor, :provider, :student, :uid, :oauth_token, :oauth_expires_at, :address, :zipcode)
   end
 
 end

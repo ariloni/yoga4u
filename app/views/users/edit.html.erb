@@ -16,12 +16,20 @@
     <%= f.text_area :bio, required: true %>
   </p>
   <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address, required: true %>
+  </p>
+  <p>
     <%= f.label :city %><br />
     <%= f.text_field :city, required: true %>
   </p>
   <p>
     <%= f.label :state %><br />
     <%= f.text_field :state, required: true %>
+  </p>
+  <p>
+    <%= f.label :zipcode %><br />
+    <%= f.text_field :zipcode, required: true %>
   </p>
   <%#= f.radio_button_tag :instructor, false %>
   <%#= f.radio_button_tag(:instructor, true) %>
