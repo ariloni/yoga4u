@@ -21,7 +21,7 @@ console.log("are you working?")
 google.maps.event.addDomListener(window, 'load', initialize);
 
 function initialize() {
-  var url = window.location.origin + window.location.pathname.slice(0, -1) + ".json" +  window.location.search 
+  var url = window.location.origin + window.location.pathname + ".json" +  window.location.search 
    $.get(url, function(results){
 
 
@@ -36,7 +36,7 @@ function initialize() {
   var bounds = new google.maps.LatLngBounds()
   // Displays content within a popup balloon on top of a map
   var infowindow = new google.maps.InfoWindow({
-  content:"Hello World!"
+  
   });
 
   infowindow.open(map,marker);
@@ -51,16 +51,21 @@ function initialize() {
 		var marker = new google.maps.Marker({
 		   position: markerPosition,
 		   map: map,
-		   title: 'hello world'
+		   
 		}
 		   //animates the marker
 	    );
-	    
+	    marker.content = '<h5>' + results[i].first_name + ' ' + results[i].last_name+ '</h5>' +
+            '<h6>' + results[i].city + ',' + results[i].state + ' ' + results[i].zipcode + '</h6>';  
 	  	marker.setMap(map);
 	  	bounds.extend(markerPosition)
 	  	map.fitBounds(bounds);
 	  	markers.push(marker)
 	  	console.log(markers)
+	  	map.addListener('click', function(marker, event) {
+                infowindow.setContent(marker.content);
+                infowindow.open(map, marker);
+            });
 	}
 	(marker, i )
 });
