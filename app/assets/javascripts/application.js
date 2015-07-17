@@ -57,11 +57,13 @@ function initialize() {
 	    );
 	    marker.content = '<h5>' + results[i].first_name + ' ' + results[i].last_name+ '</h5>' +
             '<h6>' + results[i].city + ',' + results[i].state + ' ' + results[i].zipcode + '</h6>';  
+	  	console.log(marker.content)
 	  	marker.setMap(map);
 	  	bounds.extend(markerPosition)
 	  	map.fitBounds(bounds);
 	  	markers.push(marker)
 	  	console.log(markers)
+	  	
 	  	map.addListener('click', function(marker, event) {
                 infowindow.setContent(marker.content);
                 infowindow.open(map, marker);
