@@ -1,6 +1,10 @@
-<div>
-  <h4>Review by <%= review.by_user.first_name + " " + review.by_user.last_name %></h4>
-  <p><%= review.body %></p>
-  <p>Posted <%#= distance_of_time_in_words(review.by_user_id.created_at, review.created_at) %> later</p>
-  
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= review.by_user.first_name + " " + review.by_user.last_name %></h3>
+    <p class="review_time">Posted <%= distance_of_time_in_words(review.created_at, review.created_at) %> later</p>
+  </div>
+  <div class="panel-body">
+    <%= review.body %>
+  </div>
 </div>

@@ -7,5 +7,11 @@
         <%= render 'student' %>
         
 <% end %>
+<%#= render partial: 'users/review', collection: @user.reviews_for_me %>
+<%#= render partial: 'reviews/form' %>
+<h2>Reviews</h2>
 <%= render partial: 'users/review', collection: @user.reviews_for_me %>
 <%= render partial: 'reviews/form' %>
+<%= render partial: 'users/nearby' %>
+
+

@@ -1,13 +1,13 @@
-<h3>Post a Review</h3>
+<h4>Post a Review</h4>
 
 <%= form_for [ @user, @review ] do |f| %>
   <p>
     <%= f.label :title %><br/>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class => "form-control" %>
   </p>
   <p>
     <%= f.label :body %><br/>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, :class => "form-control" %>
   </p>
   <p>
     <%= f.submit 'Submit' %>

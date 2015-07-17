@@ -1,0 +1,9 @@
+<h3>Yogis Nearby</h3>
+
+<% for user in @user.nearbys(10) %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= link_to user.first_name, user %> (<%= user.distance.round(2) %> miles)
+  </div>
+</div>
+<% end %>

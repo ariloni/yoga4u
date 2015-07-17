@@ -1,5 +1,15 @@
 Instructor
-<%=image_tag(@user.image)%>
+<h3><%= @user.first_name + " " + @user.last_name %></h3>
+<br>
+<%=image_tag(@user.image, size: "100x100")%>
+<br>
+
+<h4>Bio</h4>
 <%= @user.bio %>
-<%= @user.city %>
-<%= @user.state %>
+<br>
+<h4>Location</h4>
+<%= @user.city %>,
+<%= @user.state %>,
+<%= @user.zipcode %>
+
+<hr>

@@ -2,6 +2,15 @@ class UsersController < ApplicationController
   
   def index
     @users= User.all
+    
+  
+    if params[:search].present?
+      @users = User.near(params[:search], 50, :order => :distance)
+    else
+      @users = User.all
+    end
+  
+    #renders json for google maps
     respond_to do |format|
      format.html {
        render
@@ -14,10 +23,22 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    
+
 
     @review = Review.new
     @review.for_user_id = @user.id
     @review.by_user_id = current_user.id
+
+    #renders json for google maps
+    respond_to do |format|
+     format.html {
+       render
+     }
+     format.json {
+       render json: @users
+     }
+    end
   end
 
   def new
